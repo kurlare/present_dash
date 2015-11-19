@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Small Data Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Small Data Dashboard">
+  <meta name="author" content="Rafi Kurlansik">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  
+  <hgroup class="auto-fadein">
+    <h1>Small Data Dashboard</h1>
+    <h2>A Shiny App For Efficient Exploratory Analysis and Outlier Identification</h2>
+    <p>Rafi Kurlansik<br/>Developing Data Products Thu Nov 19 13:59:11 2015</p>
+  </hgroup>
+  
+  <article></article>  
+  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  
+  <hgroup>
+    <h2>Problem:</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>You are a researcher at a major university working with data that tracks the behavior of children at a summer camp.  </p>
+
+<p>Your old, slow Excel spreadsheet with macros makes it difficult for you to quickly identify clusters and outliers.  Worse still, the university doesn&#39;t have the resources to overhaul your current setup.  </p>
+
+<p>What if I told you that <b>interactive visualizations</b>, <b>rapid subsetting</b> of variables, and <b>snapshots of linear models</b> could be viewed with the click of a mouse?  What if I told you R was capable of streamlining all of these exploratory data analyses into one simple app accessible via the web?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  
+  <hgroup>
+    <h2>Solution:  Camp Data Dashboard</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>An easy to use web application built in Shiny that allows you to: </p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <ul>
+<li>Subset and export your data</li>
+<li>Plot your variables and select clusters or outliers</li>
+<li>Examine a quick, first glance regression model to see if a relationship warrants further analysis.</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="cdd_img.png" alt="width"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  
+  <hgroup>
+    <h2>Data Tables and Export</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>DataTables are flexible objects that quickly subset and sort the data they are populated with.</p>
+
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="tbl_img.png" alt="width"></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>With the click of a button, your subsetted data will be saved as a .csv file, with the date-time included in the file name for reference.</p>
+
+<p>To change which columns you want displayed in the DataTable, use the checkboxes in the left panel.  Note: If you try to plot a variable while its box is unchecked, the app won&#39;t be able to find the data.</p>
+
+<p>Using DataTables in conjunction with the plotting features makes finding a group of values to feed back into Excel or other software easy!</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  
+  <hgroup>
+    <h2>Interactive Plots</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p>Ggplot2 visualizations can be brushed by clicking and holding the mouse to select individual or groups of points.</p>
+
+<p>The points you select on the plot will be displayed in a data table below, allowing you to easily identify the camper and look up the rest of their values.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="plot_img.png" alt="width"></p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  
+  <hgroup>
+    <h2>Linear Models and Residuals</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>While the creators of Camp Data Dashboard discourage <a href="https://en.wikipedia.org/wiki/Data_dredging">p_hacking</a>, we have included a feature that allows for the rapid testing of basic linear models.  The output is from the R function <code>lm</code>.  </p>
+
+<pre><code class="r">sample.model &lt;- lm(Total_Positive_Peer ~ Day, data = campdata)
+sample.model$coefficients
+## (Intercept)         Day 
+##   6.3366428   0.1156098
+</code></pre>
+
+<p>In addition, the &#39;Model&#39; tab includes the option to view a residual plot of your Y variable, and a summary of each of the variables you selected to be displayed in the DataTable.</p>
+
+<p><img src="resid_img.png" alt="width"></p>
+
+<div style='float:left;width:48%;' class='centered'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  
+  <hgroup>
+    <h2>Conclusion</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><p>The essential utility of the Camp Data Dashboard is to efficiently inspect your data and prepare it for further analysis.</p></li>
+<li><p>This is achieved through interactive tables, plots, and linear models.</p></li>
+<li><p>Future releases will include importing data, plotting a filtered table, and more modeling and plotting options!</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Problem:'>
+         1
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Solution:  Camp Data Dashboard'>
+         2
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data Tables and Export'>
+         3
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Interactive Plots'>
+         4
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Linear Models and Residuals'>
+         5
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Conclusion'>
+         6
+      </a>
+    </li>
+    
+    </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
