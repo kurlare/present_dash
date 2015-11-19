@@ -2,7 +2,7 @@
 title       : Small Data Dashboard
 subtitle    : A Shiny App For Efficient Exploratory Analysis and Outlier Identification
 author      : Rafi Kurlansik
-job         : Developing Data Products Thu Nov 19 13:59:11 2015
+job         : Developing Data Products Thu Nov 19 15:00:59 2015
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -24,13 +24,15 @@ What if I told you that <b>interactive visualizations</b>, <b>rapid subsetting</
 
 ## Solution:  Camp Data Dashboard
 
-An easy to use web application built in Shiny that allows you to: 
+Well, that __is__ what I'm telling you!
 
 *** =left
 
-* Subset and export your data
-* Plot your variables and select clusters or outliers
-* Examine a quick, first glance regression model to see if a relationship warrants further analysis.
+* The essential utility of the Camp Data Dashboard is to efficiently inspect your data and prepare it for further analysis.
+
+* This is achieved through interactive tables, plots, and linear models.
+
+* Future releases will include importing data, plotting a filtered table, and more modeling and plotting customization!
 
 *** =right
 ![width](cdd_img.png)
@@ -71,7 +73,7 @@ The points you select on the plot will be displayed in a data table below, allow
 ## Linear Models and Residuals
 
 
-While the creators of Camp Data Dashboard discourage [p_hacking](https://en.wikipedia.org/wiki/Data_dredging), we have included a feature that allows for the rapid testing of basic linear models.  The output is from the R function `lm`.  
+While the creators of Camp Data Dashboard discourage [p_hacking](https://en.wikipedia.org/wiki/Data_dredging), we have included a feature that allows for the rapid testing of basic linear models.  The output is from the R function `lm`, seen here:  
 
 
 
@@ -87,12 +89,4 @@ In addition, the 'Model' tab includes the option to view a residual plot of your
 
 ![width](resid_img.png)
 
----
 
-## Conclusion
-
-* The essential utility of the Camp Data Dashboard is to efficiently inspect your data and prepare it for further analysis.
-
-* This is achieved through interactive tables, plots, and linear models.
-
-* Future releases will include importing data, plotting a filtered table, and more modeling and plotting options!
